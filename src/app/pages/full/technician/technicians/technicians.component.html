@@ -1,0 +1,354 @@
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Perfil Técnico</h5>
+        <section class="section profile">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+                            <!-- <img src="../../../../assets/assets/img/profile.jpg" alt="Profile"> -->
+                            <h2></h2>
+                            <h3>Desarrollador Front-End</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section profile">
+
+            <div class="col-xl-12">
+
+                <div class="card">
+                    <div class="card-body pt-3">
+                        <!-- Bordered Tabs -->
+                        <ul class="nav nav-tabs nav-tabs-bordered">
+
+                            <li class="nav-item">
+                                <button class="nav-link active" data-bs-toggle="tab"
+                                    data-bs-target="#profile-overview">General</button>
+                            </li>
+
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab"
+                                    data-bs-target="#certi-edit">Certificaciones</button>
+                            </li>
+
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Editar
+                                    Perfil</button>
+                            </li>
+
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab"
+                                    data-bs-target="#profile-change-password">Cambiar Contraseña</button>
+                            </li>
+
+                        </ul>
+                        <div class="tab-content pt-2">
+
+                            <div class="tab-pane fade show active profile-overview" id="profile-overview">
+
+                                <h5 class="card-title">Detalles del Perfil</h5>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label ">Nombre Completo</div>
+                                    <div class="col-lg-9 col-md-8">Carlos Torres</div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Correo Electrónico</div>
+                                    <div class="col-lg-9 col-md-8">escolta87@hotmail.com</div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Teléfono</div>
+                                    <div class="col-lg-9 col-md-8">3117018463</div>
+                                </div>
+
+                            </div>
+
+                            <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+
+                                <!-- Profile Edit Form -->
+                                <form>
+                                    <!--<div class="row mb-3">
+                                        <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Imagen de
+                                            Perfil</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <img src="../../../../assets/assets/img/profile.jpg" alt="Profile">
+                                            <div class="pt-2">
+                                                <a href="#" class="btn btn-primary btn-sm"
+                                                    title="Cargar nueva imagen de perfil"><i
+                                                        class="bi bi-upload"></i></a>
+                                                <a href="#" class="btn btn-danger btn-sm"
+                                                    title="Quitar imagen de perfil"><i class="bi bi-trash"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>-->
+
+                                    <div class="row mb-3">
+                                        <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Nombre Completo</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="fullName" type="text" class="form-control" id="fullName"
+                                                value="Carlos Torres">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="Email" class="col-md-4 col-lg-3 col-form-label">Correo Electrónico</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="email" type="email" class="form-control" id="Email"
+                                                value="escolta87@hotmail.com">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Teléfono</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="phone" type="text" class="form-control" id="Phone"
+                                                value="3117018463">
+                                        </div>
+                                    </div>                                    
+
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                                    </div>
+                                </form><!-- End Profile Edit Form -->
+
+                            </div>
+
+                            <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Formulario para la
+                                                edición de una Certificación</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Editar Certificación</h5>
+
+                                                    <!-- Floating Labels Form -->
+                                                    <form class="row g-3">
+                                                        <div class="col-md-12">
+                                                            <div class="form-floating">
+                                                                <input type="text" class="form-control"
+                                                                    id="floatingText" placeholder="code">
+                                                                <label for="floatingText">Nombre de la Certificación</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="form-floating">
+                                                                <input type="text" class="form-control"
+                                                                    id="floatingText" placeholder="code">
+                                                                <label for="floatingText">Intensidad Horaria</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-floating">
+                                                                <input type="text" class="form-control"
+                                                                    id="floatingText" placeholder="code">
+                                                                <label for="floatingText">Institución</label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-12">
+                                                            <div class="form-floating">
+                                                                <input type="text" class="form-control"
+                                                                    id="floatingText" placeholder="code">
+                                                                <label for="floatingText">Año</label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="text-center">
+                                                            <button type="submit"
+                                                                class="btn btn-primary">Actualizar</button>
+                                                            <button type="reset" class="btn btn-secondary">Limpiar
+                                                                Campos</button>
+                                                        </div>
+                                                    </form>
+                                                    <!--End floating Labels Form -->
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--Modal Created-->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Formulario para la
+                                                creación de una certificación</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Crear Certificación</h5>
+
+                                                    <!-- Floating Labels Form -->
+                                                    <form class="row g-3">
+                                                        <div class="col-md-12">
+                                                            <div class="form-floating">
+                                                                <input type="text" class="form-control"
+                                                                    id="floatingText" placeholder="code">
+                                                                <label for="floatingText">Nombre de la Certificación</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="form-floating">
+                                                                <input type="text" class="form-control"
+                                                                    id="floatingText" placeholder="code">
+                                                                <label for="floatingText">Intensidad Horaria</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-floating">
+                                                                <input type="text" class="form-control"
+                                                                    id="floatingText" placeholder="code">
+                                                                <label for="floatingText">Institución</label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-12">
+                                                            <div class="form-floating">
+                                                                <input type="text" class="form-control"
+                                                                    id="floatingText" placeholder="code">
+                                                                <label for="floatingText">Año</label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="text-center">
+                                                            <button type="submit" class="btn btn-primary">Crear</button>
+                                                            <button type="reset" class="btn btn-secondary">Limpiar
+                                                                Campos</button>
+                                                        </div>
+                                                    </form>
+                                                    <!--End floating Labels Form -->
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--Modal View Certificated-->
+                            <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Vista de Certificación
+                                                Seleccionada</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Imagen de Certificación</h5>
+
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--Table -->
+                            <div class="tab-pane fade cert-edit pt-3" id="certi-edit">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Certificación</th>
+                                            <th scope="col">Intensidad en horas</th>
+                                            <th scope="col">Institución</th>
+                                            <th scope="col">Año</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Mecánica de Motos</td>
+                                            <td>470 horas</td>
+                                            <td>Coorporación Univeristaria Autonoma de Nariño</td>
+                                            <td>2011</td>
+                                            <td><button type="button" title="Eliminar registro"
+                                                    class="btn btn-danger"><i class="bi bi-trash"></i></button></td>
+                                            <td><button type="button" title="Editar Registro" class="btn btn-info"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModal2"><i
+                                                        class="bi bi-pencil-fill"></i></button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <div class="text-center">
+                                    <button type="button" title="Agregar Nueva Certificación" class="btn btn-primary"
+                                        data-bs-toggle="modal" data-bs-target="#exampleModal">Nueva Certificación</button>
+                                </div>
+                            </div>
+
+
+
+                            <div class="tab-pane fade pt-3" id="profile-change-password">
+                                <!-- Change Password Form -->
+                                <form>
+
+                                    <div class="row mb-3">
+                                        <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Contraseña
+                                            Actual</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="password" type="password" class="form-control"
+                                                id="currentPassword">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">Nueva
+                                            Contraseña</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="newpassword" type="password" class="form-control"
+                                                id="newPassword">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Confirmación
+                                            Nueva Contraseña</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="renewpassword" type="password" class="form-control"
+                                                id="renewPassword">
+                                        </div>
+                                    </div>
+
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary">Cambiar Contraseña</button>
+                                    </div>
+                                </form><!-- End Change Password Form -->
+                            </div>
+                        </div><!-- End Bordered Tabs -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <button class="position-absolute top-0 end-0 btn btn-ligth" routerLink="/full/technicians/list"><i class="bi bi-x-lg"></i></button>
+    </div>
+
+</div>

@@ -1,0 +1,109 @@
+
+<div class="pagetitle">
+    <h1>Listado Vehiculos</h1>
+  </div>
+
+  <app-vehicles-create [vehicles]="vehicles" (vehiclesList)="onPush($event)"></app-vehicles-create>
+
+  <div class="row p-3">
+    <div class="input-group col-2 w-50 border-radius">
+      <input class="form-control border border-radius" type="search" value="" id="example-search-input"
+        [formControl]="searchForm">
+      <span class="input-group-append">
+        <button class="btn btn-outline-secondary border-left-0 border" type="button">
+          <i class="bi bi-search"></i>
+        </button>
+      </span>
+    </div>
+  </div>
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+  
+      <div *ngIf="updateState; then thenForm else elseForm"></div>
+      <ng-template #thenForm>
+        <h4 class="modal-title">Actualizar Vehiculo</h4>
+      </ng-template>    
+      <ng-template #elseForm>
+        <h4 class="modal-title">Crear Vehiculo</h4>
+      </ng-template>    
+  
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  
+    </div>
+    <div class="modal-body">
+  
+      <form class="row g-3" [formGroup]="vehicleForm">
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="firstName" placeholder="code" formControlName="brand">
+            <label for="floatingText">Marca de la Motocicleta</label>
+          </div>
+        </div>
+  
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="firstName" placeholder="code" formControlName="reference">
+            <label for="floatingText">Referencia de la Motocicleta</label>
+          </div>
+        </div>
+  
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="firstName" placeholder="code" formControlName="placa">
+            <label for="floatingText">Placa</label>
+          </div>
+        </div>
+  
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="firstName" placeholder="code" formControlName="color">
+            <label for="floatingText">Color</label>
+          </div>
+        </div>
+  
+        <div class="text-center">
+  
+          <div *ngIf="updateState; then thenBlock else elseBlock"></div>
+          <ng-template #thenBlock>          
+            <button type="submit" class="btn btn-primary" (click)="updateVehicle()">Actualizar</button>
+          </ng-template>
+          <ng-template #elseBlock>
+            <button type="submit" class="btn btn-primary" (click)="saveVehicle()">Crear</button>
+          </ng-template>
+  
+          <button type="reset" class="btn btn-secondary">Limpiar Campos</button>
+        </div>
+        
+      </form>
+      
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="modal.close('Close click')">Salir</button>
+    </div>
+  </ng-template>
+  
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Marca</th>
+        <th scope="col">Referencia</th>
+        <th scope="col">Placa</th>
+        <th scope="col">Color</th>
+        <th scope="col">Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let Vehicle of vehicles">
+        <td>{{Vehicle.brand}}</td>
+        <td>{{Vehicle.reference}}</td>
+        <td>{{Vehicle.placa}}</td>
+        <td>{{Vehicle.color}}</td>
+        <td>
+          <button type="button" title="Eliminar registro" class="btn btn-danger" (click)="deleteVehicle(Vehicle.id)"><i class="bi bi-trash"></i></button>
+          <button type="button" title="Ver detalles" class="btn btn-info" (click)="onUpdateOrSave(content,Vehicle)"><i class="bi bi-pencil"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

@@ -1,0 +1,179 @@
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title text-center">Detalles Orden de Trabajo</h5>
+        <section class="section profile">
+            <div class="row" >
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+                            <h2>Orden de Trabajo No. {{order?.id}}</h2>
+                            <h3>{{order?.vehicle?.brand + " " + order?.vehicle?.reference + " / " + order?.vehicle?.placa | uppercase  }} </h3>
+                            <h3>{{ order?.status_order?.value | uppercase }}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section profile">
+
+            <div class="col-xl-12">
+
+                <div class="card">
+                    <div class="card-body pt-3">
+                        <!-- Bordered Tabs -->
+                        <ul class="nav nav-tabs nav-tabs-bordered">
+
+                            <li class="nav-item">
+                                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Información Cliente</button>
+                            </li>
+
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#certi-edit">Información Motocicleta</button>
+                            </li>
+
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#work-tech">Personal Tecnico</button>
+                            </li>
+
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#description-client">Descripcion del Cliente</button>
+                            </li>
+
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#detailService">Detalle del Servicio</button>
+                            </li>
+
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#detailProducts">Detalle Productos</button>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content pt-2">
+
+                            <!-- Info Client -->
+                            <div class="tab-pane fade show active profile-overview" id="profile-overview">
+
+                                <h5 class="card-title">Información del Cliente</h5>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label ">Nombre Completo</div>
+                                    <div class="col-lg-9 col-md-8">{{ order?.client?.pname + " " + order?.client?.plastname | titlecase}} </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label ">Número de Identificación</div>
+                                    <div class="col-lg-9 col-md-8">{{ order?.client?.cedula }}</div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Teléfono</div>
+                                    <div class="col-lg-9 col-md-8">{{ order?.client?.phone }}</div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Correo Electrónico</div>
+                                    <div class="col-lg-9 col-md-8">{{ order?.client?.email }}</div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Dirección de Residencia</div>
+                                    <div class="col-lg-9 col-md-8">{{ order?.client?.address }}</div>
+                                </div>
+                            </div>
+
+                            <!--Info motorcycle -->
+                            <div class="tab-pane fade show profile-overview" id="certi-edit">
+                                <h5 class="card-title">Información de la Motocicleta </h5>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label ">Marca de la Motocicleta</div>
+                                    <div class="col-lg-9 col-md-8">{{ order?.vehicle?.brand }}</div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label ">Referencia de la Motocicleta</div>
+                                    <div class="col-lg-9 col-md-8">{{ order?.vehicle?.reference }}</div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Placa Motocicleta</div>
+                                    <div class="col-lg-9 col-md-8">{{ order?.vehicle?.placa }}</div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Color Motocicleta</div>
+                                    <div class="col-lg-9 col-md-8">{{ order?.vehicle?.color }}</div>
+                                </div>
+                            </div>
+
+                            <!-- Info Work-Technician -->
+                            <div class="tab-pane fade show profile-overview" id="work-tech">
+                                <h5 class="card-title">Información del Tecnico Asignado</h5>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label ">Técnico Asignado</div>
+                                    <div class="col-lg-9 col-md-8">{{ order?.technical?.name }}</div>
+                                </div>
+
+                            </div>
+
+                            <!-- Info Work-Description-Client -->
+                            <div class="tab-pane fade show profile-overview" id="description-client">
+                                <h5 class="card-title">Descripcion de fallas por parte del cliente</h5>
+
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-4 label ">Descripcion del Cliente</div>
+                                    <div class="col-lg-9 col-md-8">{{ order?.description }}</div>
+                                </div>
+
+                            </div>
+
+                            <!-- Info service-->
+                            <div class="tab-pane fade show profile-overview" id="detailService">
+                                <h5 class="card-title">Descripcion del Servico Realizado</h5>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label ">Servicio Realizado</div>
+                                    <div class="col-lg-9 col-md-8">Servico 1</div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Estado de la Orden de Trabajo</div>
+                                    <div class="col-lg-9 col-md-8">{{ order?.status_order?.value }}</div>
+                                </div>
+
+                                
+                            </div>
+
+                            <!-- Info Products -->
+                            <div class="tab-pane fade show profile-overview" id="detailProducts">
+                                <h5 class="card-title">Productos Usados</h5>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label ">Repuesto 1 </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label ">Repuesto 2 </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label ">Repuesto 3 </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label ">Repuesto 4 </div>
+                                </div>
+                                
+                            </div>
+                        </div><!-- End Bordered Tabs -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <button type="submit" class="position-absolute top-0 end-0 btn btn-ligth" routerLink="/full/work-order/list"><i
+            class="bi bi-x-lg"></i></button>
+    </div>
+</div>

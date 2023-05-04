@@ -1,0 +1,97 @@
+
+<button class="btn btn-primary" (click)="onUpdateOrSave(content)">Crear Cliente</button>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+
+    <div *ngIf="updateState; then thenForm else elseForm"></div>
+    <ng-template #thenForm>
+      <h4 class="modal-title">Actualizar Cliente</h4>
+    </ng-template>    
+    <ng-template #elseForm>
+      <h4 class="modal-title">Crear Cliente</h4>
+    </ng-template>    
+
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+
+  </div>
+  <div class="modal-body">
+
+    <form class="row g-3" [formGroup]="clientForm">
+      <div class="col-md-3">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="firstName" placeholder="code" formControlName="pname">
+          <label for="floatingText">Primer Nombre</label>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="firstName" placeholder="code" formControlName="sname">
+          <label for="floatingText">Segundo Nombre</label>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="firstName" placeholder="code" formControlName="plastname">
+          <label for="floatingText">Primer Apellido</label>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="firstName" placeholder="code" formControlName="slastname">
+          <label for="floatingText">Segundo Apellido</label>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="firstName" placeholder="code" formControlName="cedula">
+          <label for="floatingText">Número de Identificación</label>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="firstName" placeholder="code" formControlName="phone">
+          <label for="floatingText">Número de Teléfono</label>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="form-floating">
+          <input type="email" class="form-control" id="email" placeholder="code" formControlName="email">
+          <label for="floatingText">Correo Electrónico</label>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="password" placeholder="code" formControlName="address">
+          <label for="floatingPass">Dirección de Residencia</label>
+        </div>
+      </div>
+
+      <div class="text-center">
+
+        <div *ngIf="updateState; then thenBlock else elseBlock"></div>
+        <ng-template #thenBlock>          
+          <button type="submit" class="btn btn-primary" (click)="updateClient()">Actualizar</button>
+        </ng-template>
+        <ng-template #elseBlock>
+          <button type="submit" class="btn btn-primary" (click)="saveClient()">Crear</button>
+        </ng-template>
+
+        <button type="reset" class="btn btn-secondary">Limpiar Campos</button>
+      </div>
+      
+    </form>
+    
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.close('Close click')">Salir</button>
+  </div>
+</ng-template>
+
