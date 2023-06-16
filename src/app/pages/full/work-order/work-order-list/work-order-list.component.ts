@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subscription } from 'rxjs';
+import { AuthServiceResponse } from 'src/app/models/auth/auth-interface';
 import { orderResponse } from 'src/app/models/order/orderResponse';
 import { AlertService } from 'src/app/services/alert/alert.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { OrderService } from 'src/app/services/order/order.service';
 
 @Component({
@@ -13,22 +15,31 @@ import { OrderService } from 'src/app/services/order/order.service';
 })
 export class WorkOrderListComponent implements OnInit {
 
-  order?: orderResponse [];
+  order: orderResponse [] = [];
   orderId?: orderResponse[];
   subscription: Subscription[] = [];
   orderForm: FormGroup;
   updateState: boolean = false;
+  userInfo?: AuthServiceResponse;
+
+  searchForm: FormControl = new FormControl();
 
   constructor(
     private modalService: NgbModal,
     private orderService: OrderService,
     private formBuilder: FormBuilder,
-    private alertService: AlertService) {
+    private alertService: AlertService,
+    private authService: AuthService) {
       this.orderForm = this.buildForm();
     }
 
   ngOnInit(): void {
-    this.getAllOrders();
+    this.userInfo = this.authService.getUserInfo();
+    if (this.userInfo && this.userInfo.roles.name === 'TECNICO') {
+      this.getAllOrdersByTechnicianId(this.userInfo.id);
+    } else {
+      this.getAllOrders();
+    }
   }
 
   buildForm(): FormGroup {
@@ -61,7 +72,12 @@ export class WorkOrderListComponent implements OnInit {
   }
 
   getAllOrders(): void {
-    let sub = this.orderService.getAll().subscribe(orders => this.order = orders);
+    let sub = this.orderService.getAll().subscribe(orders => this.order = orders.reverse());
+    this.subscription.push(sub);
+  }
+
+  getAllOrdersByTechnicianId(id: number): void {
+    let sub = this.orderService.getAllByTechnicianId(id).subscribe(orders => this.order = orders.reverse());
     this.subscription.push(sub);
   }
 

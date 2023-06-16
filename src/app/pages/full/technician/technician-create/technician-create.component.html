@@ -1,4 +1,4 @@
-<button class="btn btn-primary" (click)="onUpdateOrSave(content)">Crear Nuevo Técnico</button>
+<button class="btn btn-dark" (click)="onUpdateOrSave(content)">Crear Nuevo Técnico</button>
 
 <ng-template #content let-modal>
     <div class="modal-header">
@@ -71,7 +71,7 @@
             <button type="submit" class="btn btn-primary" (click)="updateUser()">Actualizar</button>
           </ng-template>
           <ng-template #elseBlock>
-            <button type="submit" class="btn btn-primary" (click)="saveUser()">Crear</button>
+            <button type="submit" class="btn btn-dark" (click)="saveUser()">Crear</button>
           </ng-template>
   
           <button type="reset" class="btn btn-secondary">Limpiar

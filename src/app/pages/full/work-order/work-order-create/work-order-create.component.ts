@@ -10,6 +10,7 @@ import { userModel } from 'src/app/models/users/userModel';
 import { UserService } from 'src/app/services/user/user.service';
 import { orderModel } from 'src/app/models/order/orderModel';
 import { OrderService } from 'src/app/services/order/order.service';
+import { AlertService } from 'src/app/services/alert/alert.service';
 
 
 
@@ -39,7 +40,8 @@ export class WorkOrderCreateComponent implements OnInit, OnDestroy {
     private clientService: ClientService,
     private vehicleService: VehicleService,
     private technicianService: UserService,
-    private orderService: OrderService) {
+    private orderService: OrderService,
+    private alertService: AlertService) {
     this.ordersForm = this.buildForm();
   }
 
@@ -86,7 +88,8 @@ export class WorkOrderCreateComponent implements OnInit, OnDestroy {
   onSelectTechnician(technician: userModel) {
     console.log(technician)
     this.modalService.dismissAll();
-    this.ordersForm.controls['jobs'].setValue(technician);
+    this.ordersForm.controls['technician.id'].setValue(technician.id);
+    this.ordersForm.controls['technician.technician'].setValue(technician.name);
   }
 
   buildForm(): FormGroup {
@@ -161,6 +164,7 @@ export class WorkOrderCreateComponent implements OnInit, OnDestroy {
 
 
   onSubmit() {
+    console.log(this.ordersForm.value)
     if (this.user_id) {
       let order: orderModel = {
         client_id: this.ordersForm.value.client.id,
@@ -170,7 +174,13 @@ export class WorkOrderCreateComponent implements OnInit, OnDestroy {
         description: this.ordersForm.value.description,
         status: 3
       }
-      this.orderService.save(order).subscribe(value => console.log(value));
+      this.orderService.save(order).subscribe(value => {
+        this.searchClientform.reset;
+        this.searchVehicleform.reset;
+        this.searchTechnicianform.reset;
+        this.ordersForm.reset; 
+        this.alertService.successAlert("El registro se guardo con exito..!!")
+      });
     }
    
   }

@@ -1,0 +1,51 @@
+<div class="card-body pb-5">
+
+  <div class="pt-4 pb-2">
+    <h5 class="card-title text-center pb-0 fs-4">!Bienvenido¡</h5>
+    <p class="text-center small">Ingresa tu correo y contraseña</p>
+  </div>
+
+  <form class="row g-3 px-5" novalidate [formGroup]="LoginForm">
+
+    <div class="col-12">
+      <label for="username" class="form-label">Correo Electrónico</label>
+      <div class="input-group mb-3 align-items-center row-cols-1">
+        <input class="form-control" type="text" id="username" formControlName="username">
+        <div *ngIf="controls['username'].invalid && (controls['username'].dirty || controls['username'].touched)">
+          <div class="form-text text-danger" *ngIf="controls['username'].errors?.['required']">Please enter your username.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <label for="yourPassword" class="form-label">Contraseña</label>
+      <input type="password" name="password" formControlName="password" class="form-control" id="yourPassword">
+      <div *ngIf="controls['password'].invalid && (controls['password'].dirty || controls['password'].touched)">
+        <div class="form-text text-danger" *ngIf="controls['password'].errors?.['required']">Please enter your password!
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 text-center p-2">
+      <div class="form-check px-5">
+        <label class="form-check-label p-0 b-0" for="rememberMe">Recordar contraseña</label>
+        <input class="form-check-input p-0 b-0" type="checkbox" name="remember" value="true" id="rememberMe">
+      </div>
+    </div>
+
+    <div class="col-12">
+      <button class="btn btn-primary w-100" type="button" (click)="onSubmit()" [disabled]="LoginForm.invalid">Iniciar
+        sesión</button>
+    </div>
+    <div class="col-12 text-center p-2">
+      <p class="small mb-0"><a routerLink="/content/recover">¿Olvido su contraseña?</a>
+      </p>
+    </div>
+    <!-- <div class="col-12">
+                <p class="small mb-0">No tienes una cuenta? <a routerLink="/content/signup">Registrarse</a></p>
+              </div> -->
+
+  </form>
+
+</div>

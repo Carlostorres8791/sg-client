@@ -108,6 +108,7 @@ export class VehiclesComponent implements OnInit {
   }
 
   transformData(vehicle: vehicleModel): void {
+    console.log(vehicle)
     this.vehicleForm.setValue(vehicle)
   }
 

@@ -1,0 +1,37 @@
+<div class="card-body">
+    <div class="">
+    </div>
+    <form class="row g-3 p-5 text-center" [formGroup]="validateForm">
+      <div class="col-12">
+        <h5 class="card-title text-center pb-0 fs-4">Validar código </h5>
+        <p class="text-center small">Por favor ingrese el codigo enviado a su correo electrónico</p>
+      </div>
+  
+      <div class="col-12 mb-3">
+        <div class="input-group align-items-center row-cols-1">
+          <label for="code" class="form-label">Usuario</label>
+          <input type="text" class="form-control px-5" formControlName="username" >
+          <div *ngIf="controls['username'].invalid && (controls['username'].dirty || controls['username'].touched)">
+            <div class="form-text text-danger" *ngIf="controls['username'].errors?.['required']">Please enter your username.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 mb-3">
+        <div class="input-group align-items-center row-cols-1 text-center">
+            <label for="code" class="form-label">Validar Código</label>
+          <input type="text" class="form-control px-5 text-center" formControlName="code">
+          <div *ngIf="controls['code'].invalid && (controls['code'].dirty || controls['code'].touched)">
+            <div class="form-text text-danger" *ngIf="controls['code'].errors?.['required']">Please enter your username.</div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-12">
+        <button class="btn btn-primary " type="button" [disabled]="validateForm.invalid" (click)="onSubmit()">Validar</button>
+      </div>
+      <div class="col-12">
+        <p class="small mb-0"><a routerLink="/content/login">Login</a></p>
+      </div>
+    </form>
+  </div>

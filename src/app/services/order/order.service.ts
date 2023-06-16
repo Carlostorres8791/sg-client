@@ -24,6 +24,10 @@ export class OrderService {
     return this.http.get<orderResponse[]>(this.uri);
   }
 
+  getAllByTechnicianId(id: number): Observable<orderResponse[]> {
+    return this.http.get<orderResponse[]>(this.uri + 'bytechnician/' + id);
+  }
+
   deleteById(orderId: number): Observable<any> {
     return this.http.delete<any>(this.uri + orderId);
   }

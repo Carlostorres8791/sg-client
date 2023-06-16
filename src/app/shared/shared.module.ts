@@ -8,6 +8,7 @@ import { ActiveLinkDirective } from './directives/active-link.directive';
 import { ToggleSidebarDirective } from './directives/toggle-sidebar.directive';
 import { SearchPipe } from './pipes/search.pipe';
 import { StatusOrderDirective } from './directives/status-order.directive';
+import { OrderSearchPipe } from './pipes/order-search.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { StatusOrderDirective } from './directives/status-order.directive';
     ActiveLinkDirective,
     ToggleSidebarDirective,
     SearchPipe,
-    StatusOrderDirective
+    StatusOrderDirective,
+    OrderSearchPipe
   ],
   imports: [
     CommonModule,
@@ -28,6 +30,7 @@ import { StatusOrderDirective } from './directives/status-order.directive';
     NavbarComponent,
     FooterComponent,
     SearchPipe,
+    OrderSearchPipe,
     StatusOrderDirective,
     ActiveLinkDirective,
     ToggleSidebarDirective,

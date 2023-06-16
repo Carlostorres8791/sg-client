@@ -1,0 +1,79 @@
+<div class="pagetitle">
+  <h1>Productos</h1>
+</div><!-- End Page Title -->
+
+<button class="btn btn-primary" (click)="onUpdateOrSave(content)">Crear Nuevo Producto</button>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+
+    <div *ngIf="updateState; then thenForm else elseForm"></div>
+    <ng-template #thenForm>
+      <h4 class="modal-title">Actualizar Producto</h4>
+    </ng-template>    
+    <ng-template #elseForm>
+      <h4 class="modal-title">Crear Producto</h4>
+    </ng-template>    
+
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+
+  </div>
+
+  <div class="modal-body">
+
+    <form class="row g-3" [formGroup]="productForm">
+      <div class="col-md-12">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="firstName" placeholder="code" formControlName="name">
+          <label for="floatingText">Producto</label>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="form-floating">
+          <input type="email" class="form-control" placeholder="code" formControlName="price">
+          <label for="floatingText">Costo Aproximado</label>
+        </div>
+      </div>
+
+      <div class="text-center">
+
+        <div *ngIf="updateState; then thenBlock else elseBlock"></div>
+        <ng-template #thenBlock>          
+          <button type="submit" class="btn btn-primary" (click)="updateProduct()">Actualizar</button>
+        </ng-template>
+        <ng-template #elseBlock>
+          <button type="submit" class="btn btn-primary" (click)="saveProduct()">Crear</button>
+        </ng-template>
+    
+        <button type="reset" class="btn btn-secondary">Limpiar Campos</button>
+      </div>
+
+      <input type="hidden" id="createdbyid" formControlName="createdbyid">
+    </form>
+  </div>
+  
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.close('Close click')">Salir</button>
+  </div>
+</ng-template>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Nombre Producto</th>
+      <th scope="col">Costo Aproximado</th>
+      <th scope="col">Opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{product.name}}</td>
+      <td>{{product.price}}</td>
+      <td><button type="button" title="Eliminar registro" class="btn btn-danger" (click)="deleteProduct(product.id)"><i
+            class="bi bi-trash"></i></button>
+            <button type="button" title="Editar registro" class="btn btn-info" (click)="onUpdateOrSave(content,product)"><i class="bi bi-pencil"></i></button>
+      </td>
+    </tr>
+  </tbody>
+</table>

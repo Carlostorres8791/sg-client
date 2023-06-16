@@ -1,4 +1,4 @@
-<button class="btn btn-primary" (click)="onUpdateOrSave(content)">Crear Vehiculo</button>
+<button class="btn btn-dark" (click)="onUpdateOrSave(content)">Crear Vehiculo</button>
   
 <ng-template #content let-modal>
   <div class="modal-header">
@@ -49,10 +49,10 @@
 
         <div *ngIf="updateState; then thenBlock else elseBlock"></div>
         <ng-template #thenBlock>          
-          <button type="submit" class="btn btn-primary" (click)="updateVehicle()">Actualizar</button>
+          <button type="submit" class="btn btn-dark" (click)="updateVehicle()">Actualizar</button>
         </ng-template>
         <ng-template #elseBlock>
-          <button type="submit" class="btn btn-primary" (click)="saveVehicle()">Crear</button>
+          <button type="submit" class="btn btn-dark" (click)="saveVehicle()">Crear</button>
         </ng-template>
 
         <button type="reset" class="btn btn-secondary">Limpiar Campos</button>

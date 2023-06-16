@@ -1,8 +1,18 @@
-<div class="pagetitle">
-    <h1>Listado Técnicos</h1>
-</div><!-- End Page Title -->
+<h3 class="card-title text-center">Listado Técnicos</h3>
+<!-- End Page Title -->
 
 <app-technician-create [users]="usersp" (emitList)="onPush($event)"></app-technician-create>  
+
+<div class="row p-3">
+  <div class="input-group col-2 w-50 border-radius">
+    <input class="form-control border border-radius" type="search" value="" id="example-search-input" placeholder="Ingresa el nombre del técnico">
+    <span class="input-group-append">
+      <button class="btn btn-outline-secondary border-left-0 border" type="button">
+        <i class="bi bi-search"></i>
+      </button>
+    </span>
+  </div>
+</div>
 
 <ng-template #content let-modal>
     <div class="modal-header">
@@ -72,7 +82,7 @@
   
           <div *ngIf="updateState; then thenBlock else elseBlock"></div>
           <ng-template #thenBlock>          
-            <button type="submit" class="btn btn-primary" (click)="updateUser()">Actualizar</button>
+            <button type="submit" class="btn btn-dark" (click)="updateUser()">Actualizar</button>
           </ng-template>
           <ng-template #elseBlock>
             <button type="submit" class="btn btn-primary" (click)="saveUser()">Crear</button>
@@ -106,9 +116,9 @@
         <td>{{user.email}}</td>
         <td>{{user.username}}</td>
         <td>
-          <button type="button" title="Eliminar registro" class="btn btn-danger" (click)="deleteUser(user.id)"><i class="bi bi-trash"></i></button>
-          <button type="button" title="Editar registro" class="btn btn-info" (click)="onUpdateOrSave(content,user)"><i class="bi bi-pencil"></i></button>
-          <button type="button" title="Ver Detalles" class="btn btn-secondary" routerLink="/full/technicians"><i class="bi bi-eye-fill"></i></button>
+          <button type="button" title="Eliminar registro" class="btn btn-ligth" (click)="deleteUser(user.id)"><i class="bi bi-trash"></i></button>
+          <button type="button" title="Editar registro" class="btn btn-ligth" (click)="onUpdateOrSave(content,user)"><i class="bi bi-pencil"></i></button>
+          <button type="button" title="Ver Detalles" class="btn btn-ligth" routerLink="/full/technicians"><i class="bi bi-eye-fill"></i></button>
         </td>
   
       </tr>

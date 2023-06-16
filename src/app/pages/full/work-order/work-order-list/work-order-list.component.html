@@ -1,16 +1,24 @@
 
-<div class="pagetitle">
-    <h1>Ordenes de Trabajo</h1>
-</div><!-- End Page Title -->
-  
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" routerLink="/full/work-order/create">
+<button type="button" class="btn btn-dark" routerLink="/full/work-order/create">
     Crear Orden de Trabajo
 </button>
+
+<div class="row p-3">
+    <div class="input-group col-2 w-50 border-radius">
+      <input class="form-control border border-radius" type="search" value="" id="example-search-input" placeholder="Ingresa el número de placa" [formControl]="searchForm">
+      <span class="input-group-append">
+        <button class="btn btn-outline-secondary border-left-0 border" type="button">
+          <i class="bi bi-search"></i>
+        </button>
+      </span>
+    </div>
+</div>
 
 <table class="table table-hover">
     <thead>
         <tr>
+            <th scope="col">Número de Orden</th>
             <th scope="col">Marca Motocicleta</th>
             <th scope="col">Ref. Motocicleta</th>
             <th scope="col">Placa</th>
@@ -22,7 +30,8 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let order of order">
+        <tr *ngFor="let order of order | orderSearch: searchForm.value: 'placa', 'pname' ">
+            <td>{{order.id}}</td>
             <td>{{order.vehicle.brand | uppercase}}</td>
             <td>{{order.vehicle.reference | uppercase}}</td>
             <td>{{order.vehicle.placa | uppercase}}</td>
@@ -30,15 +39,16 @@
             <td>{{order.technical.name | titlecase }}</td>
             <td>{{order.createdat | date: 'short'}}</td>
             <td>
-                <p appStatusOrder  [status]="order.status_order.value" class="badge text-wrap">
+                <p appStatusOrder [status]="order.status_order.value" class="badge text-wrap">
                     {{order.status_order.value | uppercase}}
                 </p>
             </td>
             <td>
                 <button type="button" title="Eliminar registro" class="btn btn-light" (click)="deleteOrder(order.id)">
                     <i class="fa-light fa-trash"></i>
-                    <i class="bi bi-trash"></i></button>            
-                <button type="button" title="Ver detalles" class="btn btn-light " routerLink="/full/work-order/detail/{{order.id}}"><i class="bi bi-eye-fill"></i></button>
+                    <i class="bi bi-trash"></i></button>
+                <button type="button" title="Ver detalles" class="btn btn-light "
+                    routerLink="/full/work-order/detail/{{order.id}}"><i class="bi bi-eye-fill"></i></button>
             </td>
         </tr>
     </tbody>

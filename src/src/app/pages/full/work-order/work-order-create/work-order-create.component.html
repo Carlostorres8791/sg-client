@@ -1,0 +1,278 @@
+<div data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+  aria-hidden="true">
+
+  <div class="row justify-content-md-center">
+    <div class="card w-75">
+      <div class="card-body text-center">
+        <h5 class="card-title">Registro de Entrada</h5>
+        <h1 class="card-title">Formulario para la creación de una nueva Orden de Trabajo</h1>
+        <!-- Floating Labels Form -->
+        <form class="row p-5" [formGroup]="ordersForm">
+          <!-- Form Client -->
+          <fieldset class="border border-dark p-5">
+            <legend class="float-none w-auto p-2">Datos del Cliente</legend>
+            <div class="row g-5" formGroupName="client">
+              <div class="row g-3">
+                <div class="col-md-3">
+                  <button class="btn btn-primary mb-2 me-2" (click)="openModal(modalSeach)">Buscar Cliente</button>
+                </div>
+                <div class="col-md-3">
+                  <app-clients-create [clients]="clients" (newItem)="onPushClient($event)"></app-clients-create>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-floating">
+                  <input type="text" class="form-control" id="firstName" placeholder="code" formControlName="pname">
+                  <label for="floatingText">Primer Nombre</label>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-floating">
+                  <input type="text" class="form-control" id="firstName" placeholder="code" formControlName="sname">
+                  <label for="floatingText">Segundo Nombre</label>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-floating">
+                  <input type="text" class="form-control" id="firstName" placeholder="code" formControlName="plastname">
+                  <label for="floatingText">Primer Apellido</label>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-floating">
+                  <input type="text" class="form-control" id="firstName" placeholder="code" formControlName="slastname">
+                  <label for="floatingText">Segundo Apellido</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input type="text" class="form-control" id="firstName" placeholder="code" formControlName="cedula">
+                  <label for="floatingText">Número de Identificación</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input type="text" class="form-control" id="firstName" placeholder="code" formControlName="phone">
+                  <label for="floatingText">Número de Teléfono</label>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-floating">
+                  <input type="email" class="form-control" id="email" placeholder="code" formControlName="email">
+                  <label for="floatingText">Correo Electrónico</label>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-floating">
+                  <input type="text" class="form-control" id="password" placeholder="code" formControlName="address">
+                  <label for="floatingPass">Dirección de Residencia</label>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Form Vehicle -->
+          <fieldset class="border border-dark p-5">
+            <legend class="float-none w-auto p-2">Datos del Vehículo</legend>
+            <div class="row g-5" formGroupName="vehicle">
+
+              <div class="row g-3">
+                <div class="col-md-3">
+                  <button class="btn btn-primary mb-2 me-2" (click)="openModal(modalSearchV)">Buscar Placa</button>
+                </div>
+                <div class="col-md-3">
+                  <app-vehicles-create (newVehicles)="onPushVehicle($event)"></app-vehicles-create>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input type="text" class="form-control" id="floatingText" placeholder="nameService" formControlName="brand">
+                  <label for="floatingText">Marca de la Motocicleta</label>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input type="text" class="form-control" id="floatingText" placeholder="nameService" formControlName="reference">
+                  <label for="floatingText">Referencia de la Motocicleta</label>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input type="text" class="form-control" id="floatingText" formControlName="placa" placeholder="nameService" formControlName="placa">
+                  <label for="floatingText">Placa Motocicleta</label>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input type="text" class="form-control" id="floatingText" placeholder="nameService" formControlName="color">
+                  <label for="floatingText">Color</label>
+                </div>
+              </div>
+
+            </div>
+          </fieldset>
+
+          <fieldset class="border border-dark p-5">
+            <legend class="float-none w-auto p-2">Tecnico Solicitado</legend>
+            <div class="row g-5" formGroupName="technician">
+              
+              <div class="row g-3">
+                <div class="col-md-3">
+                  <button class="btn btn-primary " (click)="openModal(modalSearchT)">Asignar Técnico</button>
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <div class="form-floating">
+                  <input type="text" class="form-control" id="floatingText" placeholder="name" formControlName="technician">
+                  <label for="floatingText">Técnico Asignado</label>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          
+          <fieldset class="border border-dark p-5">
+            <legend class="float-none w-auto p-2">Descripcion del Servicio</legend>
+            <div class="col-12">
+              <div class="form-floating">
+                <textarea class="form-control" placeholder="Description" id="floatingTextarea" style="height: 100px;" formControlName="description"></textarea>
+                <label for="floatingTextarea">Descripción de las fallas del vehículo</label>
+              </div>
+            </div>    
+          </fieldset>
+           
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary" (click)="onSubmit()">Crear</button>
+            <button type="reset" class="btn btn-secondary">Limpiar Campos</button>
+          </div>
+        </form>
+        <!--End floating Labels Form -->
+        <button class="position-absolute top-0 end-0 btn btn-ligth" routerLink="/full/work-order/list"><i
+            class="bi bi-x-lg"></i></button>
+      </div>
+    </div>
+
+  </div>
+
+
+  <ng-template #modalSeach let-modal>
+    <div class="modal-header modal-lx">
+      <h4 class="modal-title ">BUSCAR CLIENTE (Ingrese: Cedula o Nombre)</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body ">
+      <input type="search" (keydown.enter)="onPressClient($event)" [formControl]="searchClientform">
+
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">No. de ID</th>
+            <th scope="col">Teléfono</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="clients.length > 0; else elseBlock">
+          <tr *ngFor="let client of clients" (click)="onSelectClient(client)">
+            <td>{{client.pname}}</td>
+            <td>{{client.plastname}}</td>
+            <td>{{client.cedula}}</td>
+            <td>{{client.phone}}</td>
+            <td>{{client.email}}</td>
+          </tr>
+        </tbody>
+        <ng-template #elseBlock>
+          <tbody>
+            <tr>
+              <td colspan="5" class="text-center">No hay resultados</td>
+            </tr>
+          </tbody>
+        </ng-template>
+      </table>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+  </ng-template>
+
+  <ng-template #modalSearchV let-modal>
+    <div class="modal-header modal-lx">
+      <h4 class="modal-title ">BUSCAR MOTOCICLETA (Ingrese la Placa)</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body ">
+      <input type="search" (keydown.enter)="onPressVehicle($event)" [formControl]="searchVehicleform">
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Marca</th>
+            <th scope="col">Referencia</th>
+            <th scope="col">Placa</th>
+            <th scope="col">Color</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="vehicles; else elseBlockV">
+          <tr (click)="onSelectVehicle(vehicles)">
+            <td>{{vehicles.brand}}</td>
+            <td>{{vehicles.reference}}</td>
+            <td>{{vehicles.placa}}</td>
+            <td>{{vehicles.color}}</td>
+          </tr>
+        </tbody>
+        <ng-template #elseBlockV>
+          <tbody>
+            <tr>
+              <td colspan="5" class="text-center">No hay resultados</td>
+            </tr>
+          </tbody>
+        </ng-template>
+      </table>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+  </ng-template>
+
+  <ng-template #modalSearchT let-modal>
+    <div class="modal-header modal-lx">
+      <h4 class="modal-title ">ELEGIR TECNICO (Ingrese el Nombre)</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body ">
+      <input type="search" [formControl]="searchTechnicianform">
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Nombre Tecnico</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="technicians; else elseBlockV">
+          <tr  *ngFor="let item of technicians | search: searchTechnicianform.value: 'name' " (click)="onPushTechnician(item)" (click)="onSelectVehicle(item)">
+            <td>{{ item.name }}</td>
+          </tr>
+        </tbody>
+        <ng-template #elseBlockV>
+          <tbody>
+            <tr>
+              <td colspan="5" class="text-center">No hay resultados</td>
+            </tr>
+          </tbody>
+        </ng-template>
+      </table>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+  </ng-template>

@@ -9,9 +9,11 @@ export class SearchPipe implements PipeTransform {
     if (!searchTerm) {
       return items;
     }
+    console.log(items,searchTerm,labelKey)
+
     return items.filter(
       item =>
-        item[labelKey || 'pname' || 'sname' || 'plastname' || 'slastname' || 'cedula' || 'email' ]
+        item[labelKey || 'placa' || 'pname' || 'sname' || 'plastname' || 'slastname' || 'cedula' || 'email' ]
           .toLowerCase()
           .includes(searchTerm.toLowerCase()) === true).slice(0, 10);
   }

@@ -1,0 +1,20 @@
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+    
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <div *ngFor="let i of mains">
+        
+        <li class="nav-item" *ngIf="!i.hidden">
+          <a appActiveLink class="nav-link collapsed" [routerLink]="[i.path]" >
+            <i [class]="i.icon"></i>
+            <span>{{ i.title | titlecase }}</span>
+          </a>
+        </li>
+      
+      </div>
+
+    </ul>
+    <!-- <button class="position-absolute top-0 end-0 btn btn-ligth" appToggleSidebar><i
+      class="bi bi-x-lg"></i></button> -->
+  </aside><!-- End Sidebar-->

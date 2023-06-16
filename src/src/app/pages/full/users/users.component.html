@@ -1,0 +1,107 @@
+<div class="pagetitle">
+  <h1>Usuarios del Sistema</h1>
+</div><!-- End Page Title -->
+
+<button class="btn btn-primary" (click)="onUpdateOrSave(content)">Crear Nuevo Usuario</button>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+
+    <div *ngIf="updateState; then thenForm else elseForm"></div>
+    <ng-template #thenForm>
+      <h4 class="modal-title">Actualizar Usuario</h4>
+    </ng-template>    
+    <ng-template #elseForm>
+      <h4 class="modal-title">Crear Usuario</h4>
+    </ng-template>    
+
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+
+  </div>
+  <div class="modal-body">
+
+    <form class="row g-3" [formGroup]="userForm">
+      <div class="col-md-12">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="firstName" placeholder="code" formControlName="name">
+          <label for="floatingText">Nombres y Apellidos</label>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-floating mb-3">
+          <select class="form-select" id="floatingSelect" aria-label="Ref.Mark" formControlName="rol_id">
+            <option value="1">Admin</option>
+            <option value="2">Cliente</option>
+            <option value="3">Técnico</option>
+          </select>
+          <label for="floatingSelect">Rol de Usuario</label>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="form-floating">
+          <input type="email" class="form-control" id="email" placeholder="code" formControlName="email">
+          <label for="floatingText">Correo Electrónico</label>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="userName" placeholder="code" formControlName="username">
+          <label for="floatingText">Nombre de Usuario</label>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="form-floating">
+          <input type="password" class="form-control" id="password" placeholder="code" formControlName="password">
+          <label for="floatingPass">Contraseña</label>
+        </div>
+      </div>
+
+      <div class="text-center">
+
+        <div *ngIf="updateState; then thenBlock else elseBlock"></div>
+        <ng-template #thenBlock>          
+          <button type="submit" class="btn btn-primary" (click)="updateUser()">Actualizar</button>
+        </ng-template>
+        <ng-template #elseBlock>
+          <button type="submit" class="btn btn-primary" (click)="saveUser()">Crear</button>
+        </ng-template>
+
+        <button type="reset" class="btn btn-secondary">Limpiar Campos</button>
+      </div>
+      
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.close('Close click')">Salir</button>
+  </div>
+</ng-template>
+
+
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Usuario</th>
+      <th scope="col">Email</th>
+      <th scope="col">Nombre de Usuario</th>
+      <th scope="col">Rol</th>
+      <th scope="col">Opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{user.name}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.username}}</td>
+      <td>{{user.rol_name}}</td>
+      <td>
+        <button type="button" title="Eliminar registro" class="btn btn-danger" (click)="deleteUser(user.id)"><i class="bi bi-trash"></i></button>
+        <button type="button" title="Ver detalles" class="btn btn-info" (click)="onUpdateOrSave(content,user)"><i class="bi bi-pencil"></i></button>
+      </td>
+    </tr>
+  </tbody>
+</table>

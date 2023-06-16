@@ -1,12 +1,10 @@
-<div class="pagetitle">
-  <h1>Listado Clientes</h1>
-</div>
+<h3 class="card-title text-center">Listado Clientes</h3>
 
 <app-clients-create [clients]="clients" (newItemEvent)="onPush($event)"></app-clients-create>
 
 <div class="row p-3">
   <div class="input-group col-2 w-50 border-radius">
-    <input class="form-control border border-radius" type="search" value="" id="example-search-input" [formControl]="searchForm">
+    <input class="form-control border border-radius" type="search" value="" id="example-search-input" placeholder="Ingrese número de cédula" [formControl]="searchForm">
     <span class="input-group-append">
       <button class="btn btn-outline-secondary border-left-0 border" type="button">
         <i class="bi bi-search"></i>
@@ -35,9 +33,9 @@
       <td>{{client.phone}}</td>
       <td>{{client.email}}</td>
       <td>
-        <button type="button" title="Eliminar registro" class="btn btn-danger" (click)="deleteClient(client.id)"><i
+        <button type="button" title="Eliminar registro" class="btn btn-light" (click)="deleteClient(client.id)"><i
             class="bi bi-trash"></i></button>
-        <button type="button" title="Ver detalles" class="btn btn-info" (click)="onUpdateOrSave(content,client)"><i
+        <button type="button" title="Ver detalles" class="btn btn-light" (click)="onUpdateOrSave(content,client)"><i
             class="bi bi-pencil"></i></button>
       </td>
     </tr>
@@ -122,10 +120,10 @@
 
         <div *ngIf="updateState; then thenBlock else elseBlock"></div>
         <ng-template #thenBlock>
-          <button type="submit" class="btn btn-primary" (click)="updateClient()">Actualizar</button>
+          <button type="submit" class="btn btn-dark" (click)="updateClient()">Actualizar</button>
         </ng-template>
         <ng-template #elseBlock>
-          <button type="submit" class="btn btn-primary" (click)="saveClient()">Crear</button>
+          <button type="submit" class="btn btn-dark" (click)="saveClient()">Crear</button>
         </ng-template>
 
         <button type="reset" class="btn btn-secondary">Limpiar Campos</button>

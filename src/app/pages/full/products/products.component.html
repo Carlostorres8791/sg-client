@@ -1,8 +1,18 @@
-<div class="pagetitle">
-  <h1>Productos</h1>
-</div><!-- End Page Title -->
+<h3 class="card-title text-center">Listado Productos</h3>
+<!-- End Page Title -->
 
-<button class="btn btn-primary" (click)="onUpdateOrSave(content)">Crear Nuevo Producto</button>
+<button class="btn btn-dark" (click)="onUpdateOrSave(content)">Crear Nuevo Producto</button>
+
+<div class="row p-3">
+  <div class="input-group col-2 w-50 border-radius">
+    <input class="form-control border border-radius" type="search" value="" id="example-search-input" placeholder="Ingresa nombre del producto">
+    <span class="input-group-append">
+      <button class="btn btn-outline-secondary border-left-0 border" type="button">
+        <i class="bi bi-search"></i>
+      </button>
+    </span>
+  </div>
+</div>
 
 <ng-template #content let-modal>
   <div class="modal-header">
@@ -40,10 +50,10 @@
 
         <div *ngIf="updateState; then thenBlock else elseBlock"></div>
         <ng-template #thenBlock>          
-          <button type="submit" class="btn btn-primary" (click)="updateProduct()">Actualizar</button>
+          <button type="submit" class="btn btn-dark" (click)="updateProduct()">Actualizar</button>
         </ng-template>
         <ng-template #elseBlock>
-          <button type="submit" class="btn btn-primary" (click)="saveProduct()">Crear</button>
+          <button type="submit" class="btn btn-dark" (click)="saveProduct()">Crear</button>
         </ng-template>
     
         <button type="reset" class="btn btn-secondary">Limpiar Campos</button>
@@ -70,9 +80,9 @@
     <tr *ngFor="let product of products">
       <td>{{product.name}}</td>
       <td>{{product.price}}</td>
-      <td><button type="button" title="Eliminar registro" class="btn btn-danger" (click)="deleteProduct(product.id)"><i
+      <td><button type="button" title="Eliminar registro" class="btn btn-ligth" (click)="deleteProduct(product.id)"><i
             class="bi bi-trash"></i></button>
-            <button type="button" title="Editar registro" class="btn btn-info" (click)="onUpdateOrSave(content,product)"><i class="bi bi-pencil"></i></button>
+            <button type="button" title="Editar registro" class="btn btn-ligth" (click)="onUpdateOrSave(content,product)"><i class="bi bi-pencil"></i></button>
       </td>
     </tr>
   </tbody>

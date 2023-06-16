@@ -23,9 +23,9 @@ export class StatusOrderDirective implements OnInit, OnChanges {
   }
 
   setStatus(status: string) {
-    if (status.includes('abierta')) {
+    if (status.includes('Sin iniciar')) {
       this.render.addClass(this.element.nativeElement, 'text-bg-light');
-    } else if (status.includes('cerrada')) {
+    } else if (status.includes('Terminada')) {
       this.render.addClass(this.element.nativeElement, 'text-bg-success');
     } else{
       this.render.addClass(this.element.nativeElement, 'text-bg-info');

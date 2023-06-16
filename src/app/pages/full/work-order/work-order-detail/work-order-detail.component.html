@@ -9,8 +9,10 @@
                         <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
                             <h2>Orden de Trabajo No. {{order?.id}}</h2>
                             <h3>{{order?.vehicle?.brand + " " + order?.vehicle?.reference + " / " + order?.vehicle?.placa | uppercase  }} </h3>
-                            <h3>{{ order?.status_order?.value | uppercase }}</h3>
+                            <button type="button" class="btn btn-danger">{{ order?.status_order?.value | uppercase }}</button>
+                            <h3></h3>
                         </div>
+                        
                     </div>
                 </div>
             </div>
@@ -123,8 +125,7 @@
                             <div class="tab-pane fade show profile-overview" id="description-client">
                                 <h5 class="card-title">Descripcion de fallas por parte del cliente</h5>
 
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-4 label ">Descripcion del Cliente</div>
+                                <div class="row">                                    
                                     <div class="col-lg-9 col-md-8">{{ order?.description }}</div>
                                 </div>
 

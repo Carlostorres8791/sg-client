@@ -1,5 +1,5 @@
 
-<button class="btn btn-primary" (click)="onUpdateOrSave(content)">Crear Cliente</button>
+<button class="btn btn-dark" (click)="onUpdateOrSave(content)">Crear Cliente</button>
 
 <ng-template #content let-modal>
   <div class="modal-header">
@@ -78,10 +78,10 @@
 
         <div *ngIf="updateState; then thenBlock else elseBlock"></div>
         <ng-template #thenBlock>          
-          <button type="submit" class="btn btn-primary" (click)="updateClient()">Actualizar</button>
+          <button type="submit" class="btn btn-dark" (click)="updateClient()">Actualizar</button>
         </ng-template>
         <ng-template #elseBlock>
-          <button type="submit" class="btn btn-primary" (click)="saveClient()">Crear</button>
+          <button type="submit" class="btn btn-dark" (click)="saveClient()">Crear</button>
         </ng-template>
 
         <button type="reset" class="btn btn-secondary">Limpiar Campos</button>
