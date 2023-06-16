@@ -9,7 +9,7 @@ export interface AuthInterface {
 
 export interface recoverPassword {
     username: string;
-}
+} 
 
 
 export interface RolesModel {
